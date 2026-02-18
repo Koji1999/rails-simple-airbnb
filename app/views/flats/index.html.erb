@@ -1,0 +1,46 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>All our Flats</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+        <p><%= "#{@flats.count} flats" %></p>
+    </div>
+  </div>
+  <div class="container mt-4">
+  <div class="row">
+    <% @flats.each do |flat| %>
+      <div class="col-4 mb-4">
+      <div class="card shadow-sm">
+        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?w=1200"
+            class="card-img-top"
+            alt="Light & Spacious Garden Flat London">
+
+        <div class="card-body">
+          <h5 class="card-title"><%= flat.name %></h5>
+          <p class="card-text text-muted mb-2">
+            <%= flat.address %>
+          </p>
+
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span>
+              <i class="fa-solid fa-user-group"></i> <%= flat.number_of_guests %>
+            </span>
+            <span aria-hidden="true">💶 <%= flat.price_per_night %></span>
+          </div>
+        </div>
+
+        <div class="card-footer bg-white">
+          <%= link_to "More info", flat_path(flat), class: "me-3" %>
+          <%= link_to "Edit", edit_flat_path(flat), class: "text-warning me-3" %>
+          <%= link_to "Remove", flat_path(flat), data: { turbo_method: :delete, turbo_confirm: "Sure?" }, class: "text-danger" %>
+        </div>
+      </div>
+      </div>
+    <% end %>
+  </div>
+  </div>
+</div>
